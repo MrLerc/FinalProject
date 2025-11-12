@@ -2,6 +2,8 @@ package com.example.onlineshop.PresentationLayer.controller;
 
 import com.example.onlineshop.BusinessLogicLayer.VendorService;
 import com.example.onlineshop.BusinessLogicLayer.ProductService;
+import com.example.onlineshop.DataAccessLayer.entity.Product;
+import com.example.onlineshop.PresentationLayer.dto.product.ProductResponse;
 import com.example.onlineshop.PresentationLayer.dto.vendor.VendorRequest;
 import com.example.onlineshop.PresentationLayer.dto.vendor.VendorResponse;
 import jakarta.validation.Valid;
@@ -58,7 +60,6 @@ public class VendorController {
     @GetMapping("/search")
     public ResponseEntity<List<VendorResponse>> searchVendors(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) LocalDate dateOfBirth,
             @RequestParam(required = false) String emailContains,
             @RequestParam(required = false) String phoneContains,
             @RequestParam(required = false) String addressContains,
@@ -68,7 +69,7 @@ public class VendorController {
             @RequestParam(required = false) Instant maxUpdated
     ) {
         List<VendorResponse> responseBody = vendorService.search(
-                name, dateOfBirth, emailContains, phoneContains, addressContains,
+                name, emailContains, phoneContains, addressContains,
                 minCreated, maxCreated, minUpdated, maxUpdated
         );
         if (responseBody.isEmpty()) {
@@ -78,7 +79,7 @@ public class VendorController {
     }
     @GetMapping("/{id}/products")
     public ResponseEntity<List<ProductResponse>> getProductsByOwner(@PathVariable Long id) {
-        List<ProductResponse> responseBody = productService.getProductsByOwner(id);
+        List<ProductResponse> responseBody = productService.getProductsByVendor(id);
         if (responseBody.isEmpty()) {
             return ResponseEntity.noContent().build();
         }

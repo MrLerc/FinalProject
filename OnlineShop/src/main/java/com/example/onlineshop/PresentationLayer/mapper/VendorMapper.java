@@ -10,7 +10,6 @@ public final class VendorMapper {
     public static Vendor toEntity(VendorRequest req){
         return Vendor.builder()
                 .name(req.name())
-                .dateOfBirth(req.dateOfBirth())
                 .email(req.email())
                 .phone(req.phone())
                 .address(req.address())
@@ -22,7 +21,6 @@ public final class VendorMapper {
         return new VendorResponse(
                 vendor.getId(),
                 vendor.getName(),
-                vendor.getDateOfBirth(),
                 vendor.getEmail(),
                 vendor.getPhone(),
                 vendor.getAddress(),

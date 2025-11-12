@@ -60,16 +60,19 @@ public class ProductController {
     @GetMapping("/search")
     public ResponseEntity<List<ProductResponse>> searchProducts(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String descriptionContains,
-            @RequestParam(required = false) Instant minCreated,
-            @RequestParam(required = false) Instant maxCreated,
-            @RequestParam(required = false) Instant minUpdated,
-            @RequestParam(required = false) Instant maxUpdated
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Integer quantity,
+            @RequestParam(required = false) Long vendorId
     ) {
         List<ProductResponse> responseBody = productService.search(
-                name, descriptionContains,
-                minCreated, maxCreated,
-                minUpdated, maxUpdated
+                name,
+                minPrice,
+                maxPrice,
+                description,
+                quantity,
+                vendorId
         );
         if (responseBody.isEmpty()) {
             return ResponseEntity.noContent().build();

@@ -8,12 +8,13 @@ import com.example.onlineshop.PresentationLayer.mapper.VendorMapper;
 import com.example.onlineshop.utilities.DuplicateResourceException;
 import com.example.onlineshop.utilities.VendorHasProductsException;
 import com.example.onlineshop.utilities.VendorNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class VendorService {
     private final VendorRepository vendorRepository;
     public VendorService(VendorRepository repository) {
@@ -61,7 +62,6 @@ public class VendorService {
             throw new DuplicateResourceException("Vendor address already exists: " + req.address());
         }
         current.setName(req.name());
-        current.setDateOfBirth(req.dateOfBirth());
         current.setEmail(req.email());
         current.setPhone(req.phone());
         current.setAddress(req.address());
@@ -82,7 +82,6 @@ public class VendorService {
     @Transactional(readOnly = true)
     public List<VendorResponse> search(
             String name,
-            LocalDate dateOfBirth,
             String emailContains,
             String phoneContains,
             String addressContains,
@@ -96,7 +95,7 @@ public class VendorService {
         String phoneNorm = normalize(phoneContains);
         String addressNorm = normalize(addressContains);
         return vendorRepository.searchAll(
-                        nameNorm, emailNorm, phoneNorm,  addressNorm, dateOfBirth, dateOfBirth,
+                        nameNorm, emailNorm, phoneNorm,  addressNorm,
                         minCreated, maxCreated, minUpdated, maxUpdated
                 )
                 .stream().map(VendorMapper::toResponse).toList();

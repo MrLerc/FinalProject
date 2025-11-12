@@ -7,7 +7,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +29,6 @@ public class Vendor {
 
     @Column(nullable = false, length = 80)
     private String name;
-
-    @Column(nullable = false)
-    private LocalDate dateOfBirth;
 
     @Column(nullable = false, length = 255)
     private String email;

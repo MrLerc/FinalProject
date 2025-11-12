@@ -6,7 +6,6 @@ import java.time.LocalDate;
 public record VendorResponse(
         Long id,
         String name,
-        LocalDate dateOfBirth,
         String email,
         String phone,
         String address,
