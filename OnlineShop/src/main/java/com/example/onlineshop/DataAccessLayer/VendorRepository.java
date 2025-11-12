@@ -10,10 +10,9 @@ import java.util.List;
 
 public interface VendorRepository extends JpaRepository<Vendor, Long> {
 
-    // ---- Derived query ----
     boolean existsByEmailIgnoreCase(String email);
+    boolean existsByAddressIgnoreCase(String address);
 
-    // ---- Flexible search query with optional filters ----
     @Query("""
         SELECT v
         FROM Vendor v
