@@ -1,6 +1,6 @@
 package com.example.onlineshop.PresentationLayer.mapper;
 
-import com.example.onlineshop.DataAccessLayer.Vendor;
+import com.example.onlineshop.DataAccessLayer.entity.Vendor;
 import com.example.onlineshop.PresentationLayer.dto.vendor.VendorRequest;
 import com.example.onlineshop.PresentationLayer.dto.vendor.VendorResponse;
 

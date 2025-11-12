@@ -1,5 +1,6 @@
-package com.example.onlineshop.DataAccessLayer;
+package com.example.onlineshop.DataAccessLayer.repository;
 
+import com.example.onlineshop.DataAccessLayer.entity.Vendor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

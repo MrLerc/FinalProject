@@ -1,4 +1,4 @@
-package com.example.onlineshop.PresentationLayer;
+package com.example.onlineshop.PresentationLayer.controller;
 
 import com.example.onlineshop.BusinessLogicLayer.VendorService;
 import com.example.onlineshop.BusinessLogicLayer.ProductService;

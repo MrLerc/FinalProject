@@ -1,4 +1,4 @@
-package com.example.onlineshop.DataAccessLayer;
+package com.example.onlineshop.DataAccessLayer.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
